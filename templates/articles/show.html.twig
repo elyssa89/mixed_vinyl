@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}<h1>{{ title }}</h1> {% endblock %}
+{% block body %} 
+
+<p>This is a simple HTML paragraph. You can replace this text with your own content.</p>
+<b> comments : {{ comments|length}}</b>
+<ul>
+
+{% for comment in comments %}
+   <li> {{ comment }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

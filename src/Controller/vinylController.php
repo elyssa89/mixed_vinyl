@@ -4,20 +4,26 @@
 ### the name of the file must match the class nmae .php
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
 
-class vinylController
+class vinylController extends AbstractController
 {
     #[Route(path:"/", name:"homepage")]
     public function homepage(){
         return new Response("helooo again ");
     }
-    #[Route(path:"/browse/{slug}", name:"")]
-    public function browse(string $slug = null ): Response{
-        $title = str_replace("-"," ",$slug);
-        return new Response('Genre: '.$title);
+    #[Route(path:"/news/{slug}", name:"")]
+    public function browse(string $slug = null ) :Response{
+        $comments = [
+            "first"=> "firstComment",
+            "second" => "second comment",
+            "third" => "third comment",
+
+        ];
+        return $this->render("articles/show.html.twig", ['title'=> $slug,'comments'=> $comments]);
     }
 }
