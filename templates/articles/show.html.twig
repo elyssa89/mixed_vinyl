@@ -1,13 +1,25 @@
 {% extends 'base.html.twig' %}
 {% block title %}<h1>{{ title }}</h1> {% endblock %}
-{% block body %} 
+{% block content %} 
 
 <p>This is a simple HTML paragraph. You can replace this text with your own content.</p>
 <b> comments : {{ comments|length}}</b>
-<ul>
+<br>
+<b> slug value : {{ slug}}</b>
 
+<ul>
+{# dump()#}
 {% for comment in comments %}
    <li> {{ comment }}</li>
 {% endfor %}
 </ul>
+
+<a href="{{path('app_homepage')}}"> <b>link to test url </b></a>
+<br>
+<a href="{{path('app_browse')}}"> <b>link to same page </b></a>
+<br>
+<a href="{{path('app_browse' , {
+      'slug':'pop'})}}"> 
+   <b>link to same page with wildcart route parm (slug) </b
+</a>
 {% endblock %}
